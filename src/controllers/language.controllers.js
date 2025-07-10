@@ -1,4 +1,4 @@
-import { ProgrammingLanguage } from "../models/language.model";
+import { ProgrammingLanguage } from "../models/language.model.js";
 
 export const createlanguage = async(req, res)=>{
 

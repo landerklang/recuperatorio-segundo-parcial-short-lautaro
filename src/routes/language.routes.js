@@ -1,14 +1,14 @@
 import express from "express";
-import { createlanguage,getlanguageByid,getalllanguage,updatelanguage,delestlanguage } from "../controllers/language.controllers";
+import { createlanguage,getlanguageByid,getalllanguage,updatelanguage,delestlanguage } from "../controllers/language.controllers.js";
 
 export const languagerourtes = express.Router();
 
-language.post("/languages"),createlanguage;
+languagerourtes.post("/languages",createlanguage);
 
-language.get("/languages"),getalllanguage;
+languagerourtes.get("/languages",getalllanguage);
 
-language.get("/languages/:id"),getlanguageByid;
+languagerourtes.get("/languages/:id",getlanguageByid);
 
-language.put("/language/:id"),updatelanguage;
+languagerourtes.put("/language/:id",updatelanguage);
 
-language.delete("/language/:id"),delestlanguage;
+languagerourtes.delete("/language/:id",delestlanguage);
