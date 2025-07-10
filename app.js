@@ -16,7 +16,6 @@ app.use(morgan("dev"));
 sequelize.authenticate
 
 app.use("/api",languagerourtes)
-
 app.listen(PORT,async()=>{
     await staON();
     console.log(`se escuhca correctamente el puerto ${PORT}`)
