@@ -1,4 +1,3 @@
-import { json } from "sequelize";
 import { ProgrammingLanguage } from "../models/language.model.js";
 
 export const createlanguage = async(req, res)=>{
