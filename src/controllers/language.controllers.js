@@ -44,7 +44,6 @@ export const getlanguageByid =async(req, res)=>{
         res.status(500).json({error: err.message});
     }
 };
-
 export const updatelanguage= async(req,res)=>{
     try{
 const [update] = await ProgrammingLanguage.update(req.body,{
