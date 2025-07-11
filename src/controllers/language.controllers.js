@@ -1,30 +1,31 @@
+import { where } from "sequelize";
 import { ProgrammingLanguage } from "../models/language.model.js";
 
 export const createlanguage = async(req, res)=>{
     const{name, paradigm,release_year}=req.body;
     if(name===""){
         return res.status(500).json({message: "no se permiten campos vacios"});
-    };
+    }
     const nombretab = await ProgrammingLanguage.findOne({where:{name}})
     if(nombretab) { return res.status(500).json({message:"ya existe un nombre igual en la base de datos"})
-    };
+    }
     if(paradigm===""){
         return res.status(500).json({message: "no se permiten paradigmas vacios"});
-    };
+    }
     if(release_year===""){
         return res.status(500).json({message: "no se permite años de salida vacios"})
-    };
+    }
     //verificador de tipo de dato entero en el atributo release_year
     const yearint= Math.floor(release_year);
     if (release_year!==yearint){
         return res.status(500).json({message: "solo se permiten años en enteros"})
-    };
+    }
 try {
     const language =await ProgrammingLanguage.create(req.body);
     console.log(language)
     res.status(201).json({message: "se creo un nuevo lenguaje "});
-} catch (error) {
-    res.status(500).json({message: "no se pudo crear el personaje"})
+} catch (err) {
+    res.status(500).json({message: "no se pudo crear el personaje",err})
 }
 };
 export const getalllanguage = async (req, res)=>{
@@ -45,6 +46,10 @@ export const getlanguageByid =async(req, res)=>{
     }
 };
 export const updatelanguage= async(req,res)=>{
+    const {name}=req.body;
+    
+    const nametabla= await ProgrammingLanguage.findOne({where:{name}});
+    if(nametabla) {return res.json({message: "ya existe otro campo con ese mismo nombre"})};
     try{
 const [update] = await ProgrammingLanguage.update(req.body,{
 where: {id: req.params.id}

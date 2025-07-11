@@ -9,6 +9,6 @@ languagerourtes.get("/languages",getalllanguage);
 
 languagerourtes.get("/languages/:id",getlanguageByid);
 
-languagerourtes.put("/language/:id",updatelanguage);
+languagerourtes.put("/languages/:id",updatelanguage);
 
-languagerourtes.delete("/language/:id",delestlanguage);
+languagerourtes.delete("/languages/:id",delestlanguage);
